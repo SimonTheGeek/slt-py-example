@@ -1,6 +1,7 @@
 """
-Author: Nick Russo
-File: complete.py
+Author: Nick Russo, Amended SimonG
+Amended for Triangle
+File: complete_homework.py
 Purpose: Entrypoint for our simple application.
 """
 
@@ -10,6 +11,7 @@ import yaml
 from shapes.rectangle import Rectangle
 from shapes.circle import Circle
 from shapes.triangle import Triangle
+
 def main(argv):
     """
     Execution starts here.
@@ -21,9 +23,10 @@ def main(argv):
     # Read the rectangles from JSON and circles from YAML
     rectangles = get_rectangles('inputs/rectangle.json')
     circles = get_circles('inputs/circle.yml')
+    triangles = get_triangles('inputs/triangle.yml')
 
     # Combine both shape types into one list
-    general_shapes = rectangles + circles
+    general_shapes = rectangles + circles + triangles
 
     # Iterate over the shape list using a 'for' loop.
     # Print out the math data for each shape using
@@ -107,8 +110,29 @@ def get_rectangles(filename):
 
     # Return the list of Rectangle objects
     return rectangle_objects
+	
+def get_triangles(filename):
+    """
+    Read in from the YAML file supplied and create
+    a list of triangles based on the input data.
+    """
+    try:
+        handle = open(filename, 'r')
+        data = yaml.load(handle)
+    except yaml.YAMLError as error:
+        print(error)
+    finally:
+        handle.close()
+
+    # Use a list comprehension to create a new triangle
+    # object for each radius integer found in the triangle_list.
+    triangle_objects = [Triangle(length) for length in data['triangle_list']]
+
+    # Return the list of triangle objects
+    return triangle_objects
 
 # If the main.py file was directly run from the shell, invoke
 # the main function.
 if __name__ == '__main__':
     main(sys.argv)
+

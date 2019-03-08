@@ -5,36 +5,30 @@ Purpose: Defines a Circle object, inherited from the abstract class Shape.
 """
 
 from math import pi
+from math import sqrt
 from shapes.shape import Shape
 
-class Circle(Shape):
+class Triangle(Shape):
     """
-    Represents a Circle shape, and contains only a radius value
+    Represents a equilateral, and contains only a side value
     and number of decimal places to use when computing values.
     """
     decimal_places = 2
 
-    def __init__(self, radius):
+    def __init__(self, length):
         """
-        Create the circle by storing the radius.
+        Create the triangle by storing the length of one side.
         """
-        self.radius = radius
+        self.length = length
 
     def area(self):
         """
-        Compute the area using the formula pi * radius^2
+        Compute the area using the formula area = (sqrt 3 / 4 ) x length ** 2
         """
-        return round(pi * (self.radius ** 2), self.decimal_places)
+        return round(( (sqrt(3) / 4) * self.length ** 2), self.decimal_places)
 
     def perimeter(self):
         """
-        Compute the perimeter (circumference) using the formula pi * diameter
+        Compute the perimeter is three time the length
         """
-        return round(pi * self.diameter(), self.decimal_places)
-
-    def diameter(self):
-        """
-        Compute the diameter using the formula radius * 2
-        Computing diameter is specific to circles, not all shapes.
-        """
-        return self.radius * 2
+        return round (self.length * 3, self.decimal_places)

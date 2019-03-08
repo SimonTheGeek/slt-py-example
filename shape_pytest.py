@@ -41,3 +41,16 @@ def test_circle():
     assert radius8.perimeter() == 50.27
     assert radius5.diameter() == 10
     assert radius8.diameter() == 16
+
+def test_triangle():
+    """
+    Defines tests on some specific triangle objects.
+    """
+    length5 = Triangle(5)
+    length8 = Triangle(8)
+
+    # Test areas, perimeters, and diameters
+    assert length5.area() == 10.83
+    assert length8.area() == 27.72
+    assert length5.perimeter() == 15
+    assert length8.perimeter() == 24

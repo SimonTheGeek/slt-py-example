@@ -16,6 +16,10 @@ your computer (Windows, Mac OS, or Linux).
   * [Usage](#usage)
   * [Testing](#testing)
 
+> Completed homework python script is completed_homework.py
+
+
+
 ## Download Instructions
 The easiest way to consume this code is to clone it using SSH or HTTPS.
 
